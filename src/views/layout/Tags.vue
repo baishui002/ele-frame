@@ -166,6 +166,8 @@ export default {
       color: #fff;
     }
   }
+  .drop-wrap {
+  }
 }
 </style>
 <style lang="css">
