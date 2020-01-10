@@ -2,7 +2,7 @@
  * @Author: 陈少泉
  * @Date: 2020-01-10 09:49:14
  * @LastEditors  : 陈少泉
- * @LastEditTime : 2020-01-10 14:47:44
+ * @LastEditTime : 2020-01-10 20:06:22
  * @Description: file content
  */
 const path = require('path')
@@ -10,12 +10,15 @@ const resolve = dir => {
   return path.join(__dirname, dir)
 }
 
-const BASE_URL = process.env.NODE_ENV === 'development'
-  ? '/'
-  : './.'
+// const BASE_URL = process.env.NODE_ENV === 'development'
+//   ? '/'
+//   : './.'
 module.exports = {
-  publicPath: BASE_URL,
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
+  assetsDir: 'static',
+  baseUrl: './',
   // 输出文件目录
+  // outputDir: process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'test' ? 'dist' : 'test',
   devServer: {
     historyApiFallback: true,
     hot: true,

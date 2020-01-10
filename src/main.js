@@ -15,7 +15,7 @@ import '@/assets/css/global.css'
 // import axios from 'axios'
 import API from './api/api'
 if (process.env.NODE_ENV !== 'production') require('./mock')
-
+console.log(11, process.env.NODE_ENV)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 // console.log(222, API)
