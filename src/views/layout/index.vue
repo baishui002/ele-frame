@@ -2,30 +2,21 @@
  * @Author: 陈少泉
  * @Date: 2020-01-06 14:38:10
  * @LastEditors  : 陈少泉
- * @LastEditTime : 2020-01-07 11:38:44
+ * @LastEditTime : 2020-01-10 16:14:24
  * @Description: file content
  -->
  <template>
-   <!-- <div class="index">
-     <Header></Header>
-     <Sidebar></Sidebar>
-     <div class="con-wrap">
-       <Tags></Tags>
-       <div class="content">
-         <router-view></router-view>
-       </div>
-     </div>
-   </div> -->
-
-    <el-container class="container-wrap">
-      <el-header class="header-wrap">
+    <el-container style="height: 100%">
+      <el-header style="padding: 0">
         <Header></Header>
       </el-header>
-      <el-container>
-        <Sidebar></Sidebar>
+      <el-container style="height: 100%">
+        <Sidebar />
         <el-main class="content">
           <Tags></Tags>
-          <router-view></router-view>
+          <transition name="fade" mode="out-in">
+            <router-view></router-view>
+          </transition>
         </el-main>
       </el-container>
     </el-container>
@@ -46,17 +37,33 @@ export default {
 </script>
 
  <style lang="scss" scoped>
- .container-wrap {
-   width: 100%;
-   height: 100%;
-
-  .el-header {
-    padding: 0;
-   }
-
   .content {
     padding: 0;
   }
- }
+  /* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
 
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
  </style>

@@ -2,7 +2,7 @@
  * @Author: 陈少泉
  * @Date: 2020-01-03 16:01:50
  * @LastEditors  : 陈少泉
- * @LastEditTime : 2020-01-07 10:29:28
+ * @LastEditTime : 2020-01-09 15:50:08
  * @Description: file content
  */
 import Vue from 'vue'
@@ -12,10 +12,14 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/global.css'
+// import axios from 'axios'
+import API from './api/api'
+if (process.env.NODE_ENV !== 'production') require('./mock')
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
-
+// console.log(222, API)
+Vue.prototype.$axios = API
 new Vue({
   router,
   store,

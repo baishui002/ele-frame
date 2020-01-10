@@ -99,6 +99,11 @@ const routes = [
     path: '/error_404',
     name: 'error_404',
     component: () => import('../../src/views/error_404/error_404')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../../src/views/login/login')
   }
 ]
 

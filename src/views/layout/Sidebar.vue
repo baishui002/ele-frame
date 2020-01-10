@@ -2,12 +2,22 @@
  * @Author: 陈少泉
  * @Date: 2020-01-06 14:39:40
  * @LastEditors  : 陈少泉
- * @LastEditTime : 2020-01-07 14:10:07
+ * @LastEditTime : 2020-01-10 16:17:58
  * @Description: file content
  -->
 <template>
-  <el-aside width="200px" class="side-wrap">
-    <el-menu :default-active="activeMenu" class="el-menu-vertical-demo" :collapse="isCollapse" unique-opened router>
+  <div class="side-wrap" ref="side">
+    <el-menu
+      style="height: 100%"
+      :default-active="activeMenu"
+      class="el-menu-vertical-demo"
+      :collapse="isCollapse"
+      unique-opened
+      router
+      background-color="#324157"
+      text-color="#bfcbd9"
+      active-text-color="#20a0ff"
+    >
       <template v-for="item in menuList">
         <!-- 有2级菜单 -->
         <template v-if="item.subs">
@@ -28,16 +38,16 @@
         </template>
       </template>
     </el-menu>
-
-  </el-aside>
+  </div>
 </template>
 
 <script>
+// import bus from '@/components/common/bus'
 export default {
   name: 'Sidebar',
   data () {
     return {
-      isCollapse: false,
+      // isCollapse: false,
       menuList: [
         {
           icon: 'el-icon-setting',
@@ -93,27 +103,32 @@ export default {
           index: 'error_404',
           title: '404页面'
         }
-      ],
-      activeMenu: ''
+      ]
+      // activeMenu: 'home'
     }
   },
-  methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
+  computed: {
+    isCollapse () {
+      return this.$store.state.isCollapse
     },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
-      // this.isCollapse = !this.isCollapse
+    activeMenu () {
+      return this.$route.path.replace('/', '')
     }
+  },
+
+  created () {
+    // bus.$on('collapse', msg => {
+    //   this.isCollapse = msg
+    // })
+  },
+  methods: {
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.side-wrap {
-  text-align: left;
-}
-.el-menu {
-  height: 100%;
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
 }
 </style>
