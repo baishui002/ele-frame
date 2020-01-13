@@ -2,7 +2,7 @@
  * @Author: 陈少泉
  * @Date: 2020-01-03 16:01:50
  * @LastEditors  : 陈少泉
- * @LastEditTime : 2020-01-09 15:50:08
+ * @LastEditTime : 2020-01-13 09:55:34
  * @Description: file content
  */
 import Vue from 'vue'
@@ -15,7 +15,9 @@ import '@/assets/css/global.css'
 // import axios from 'axios'
 import API from './api/api'
 if (process.env.NODE_ENV !== 'production') require('./mock')
+
 console.log(11, process.env.NODE_ENV)
+
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 // console.log(222, API)
